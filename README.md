@@ -11,7 +11,7 @@ has_many :prototypes, likes, comments
 - name
 - email
 - password
-- image
+- avatar
 - profile
 - position
 - occupation
@@ -40,6 +40,7 @@ belongs_to :prototype
 
 ### table
 - content
+- status
 - prototype_id
 
 
