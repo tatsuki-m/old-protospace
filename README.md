@@ -22,7 +22,6 @@ has_many :prototypes, likes, comments
 
 ```
 has_many :captured_images, comments, likes
-has_and_belongs_to_many :tags
 belongs_to :user
 ```
 
@@ -40,7 +39,7 @@ belongs_to :prototype
 ```
 
 ### table
-- tag_image
+- content
 - prototype_id
 
 
@@ -55,15 +54,6 @@ belongs_to :user, :prototype
 - user_id
 - prototype_id
 
-## Tag
-### association
-
-```
-has_and_belongs_to_many :prototypes
-```
-
-### table
-- tag_name
 
 
 ## Comment
@@ -74,14 +64,6 @@ belongs_to :user, :prototype
 ```
 
 ### table
-- comment
+- content
 - user_id
-- prototype_id
-
-
-## prototypes_and_tags
- no model
-
-### table
-- tag_id
 - prototype_id
