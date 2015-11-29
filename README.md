@@ -23,12 +23,14 @@ has_many :prototypes, likes, comments
 ```
 has_many :captured_images, comments, likes
 has_and_belongs_to_many :tags
+belongs_to :user
 ```
 
 ### table
 - name
 - catch_copy
 - concept
+- user_id
 
 ## CapturedImage
 ### association
@@ -57,7 +59,7 @@ belongs_to :user, :prototype
 ### association
 
 ```
-hash_and_belongs_to_many :prototypes
+has_and_belongs_to_many :prototypes
 ```
 
 ### table
