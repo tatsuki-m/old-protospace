@@ -267,6 +267,12 @@ body {
   color: #a94442;
 }
 
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
 .navbar-default {
   background-color: #fff;
   padding: 20px 0;
