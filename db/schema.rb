@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20151202014050) do
     t.text     "profile",                limit: 65535
     t.string   "position",               limit: 255
     t.text     "occupation",             limit: 65535
+    t.string   "avatar",                 limit: 255
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
   end

@@ -23,6 +23,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.text :profile
       t.string :position
       t.text :occupation
+      t.string :avatar
 
       ## Confirmable
       # t.string   :confirmation_token
