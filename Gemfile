@@ -14,6 +14,9 @@ gem 'erb2haml'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'pry-rails'
+gem 'carrierwave'
+gem 'rmagick'
+
 
 group :development, :test do
   gem 'byebug'
