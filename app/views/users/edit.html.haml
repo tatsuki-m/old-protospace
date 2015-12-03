@@ -1,9 +1,9 @@
 .container.user-new.clearfix
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = form_for @user do |f|
     .col-md-8.col-md-offset-2
       %header.row.user-nav.row
         .col-md-12
-          %h2 Register
+          %h2 Edit
           .user-name_image.row
             .user-name.col-md-10
               = f.text_field :name, placeholder: "Input Username", autofocus: true, required: true
@@ -12,10 +12,6 @@
                 = f.file_field :avatar
           .user-email
             = f.text_field :email, placeholder: "Input Email", required: true
-          .user-password
-            = f.password_field :password, placeholder: "Input Password", required: true, autocomplete: "off"
-          .user-password
-            = f.password_field :password_confirmation, placeholder: "Confirm Password", required: true, autocomplete: "off"
         .col-md-12
           %h4 Position
           .user-user-member.row
@@ -31,4 +27,4 @@
               = f.text_area :occupation, placeholder: "Input Occupation", size: "30×4"
         .row.text-center.user-btn
           .actions
-            = f.submit "SIGN UP", id: "button", class: "btn btn-lg btn-primary btn-block"
+            = f.submit "SAVE", id: "button", class: "btn btn-lg btn-primary btn-block"
