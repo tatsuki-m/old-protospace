@@ -7,9 +7,9 @@
           .user-name_image.row
             .user-name.col-md-10
               = f.text_field :name, placeholder: "Input Username", autofocus: true, required: true
-            .user-image.col-md-2.img_preview
-              = image_tag "", width: "100%", height: "100%", id: "user_avatar", class: "media-object", style: "display: none;"
-              = f.file_field :avatar
+            .user-image.user-temporary-image.col-md-2.fileinput.fileinput-new{data: {provides: "fileinput"}}
+              .fileinput-preview{data: {trigger: "fileinput"}}
+                = f.file_field :avatar
           .user-email
             = f.text_field :email, placeholder: "Input Email", required: true
         .col-md-12

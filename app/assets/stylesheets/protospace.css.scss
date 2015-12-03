@@ -562,7 +562,16 @@ body {
       opacity: 0;
       filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
     }
+
+    img {
+      border-radius: 50%;
+      width: 71px;
+      height: 71px;
+      margin-left: -15px;
+      cursor: pointer;
+    }
   }
+
   .user-btn {
     max-width: 300px;
     margin: auto;

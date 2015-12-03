@@ -1,34 +1,18 @@
-.container.user-new.clearfix
-  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-    .col-md-8.col-md-offset-2
-      %header.row.user-nav.row
-        .col-md-12
-          %h2 Edit
-          .user-name_image.row
-            .user-name.col-md-10
-              = f.text_field :name, placeholder: "Input Username", autofocus: true, required: true
-            .user-image.col-md-2.img_preview
-              = image_tag "", width: "100%", height: "100%", id: "user_avatar", class: "media-object", style: "display: none;"
-              = f.file_field :avatar
-          .user-email
-            = f.text_field :email, placeholder: "Input Email", required: true
-          .user-password
-            = f.password_field :password, placeholder: "Input Password", required: true, autocomplete: "off"
-          .user-password
-            = f.password_field :password_confirmation, placeholder: "Confirm Password", required: true, autocomplete: "off"
-        .col-md-12
-          %h4 Position
-          .user-user-member.row
-            .user-name.col-md-12
-              = f.text_field :position, placeholder: "Input Position"
-          %h4 Profile
-          .user-user-profile.row
-            .user-name.col-md-12
-              = f.text_area :profile, placeholder: "Input Profile", size:"30×4"
-          %h4 Occupation
-          .user-name_image.row
-            .user-name.col-md-12
-              = f.text_area :occupation, placeholder: "Input Occupation", size: "30×4"
-        .row.text-center.user-btn
-          .actions
-            = f.submit "SAVE", id: "button", class: "btn btn-lg btn-primary btn-block"
+%h2
+  Edit #{resource_name.to_s.humanize}
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email, required: true, autofocus: true
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %p
+        Currently waiting confirmation for: #{resource.unconfirmed_email}
+    = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
+    = f.input :password_confirmation, required: false
+    = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
+  .form-actions
+    = f.button :submit, "Update"
+%h3 Cancel my account
+%p
+  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+= link_to "Back", :back
