@@ -13,6 +13,11 @@
     - if alert
       .p.alert.alert-dander
         = alert
+
+    - if flash[:notice]
+      .p.alert.alert-success
+        = flash[:notice]
+
     = yield
     %footer
       = render partial: 'common/footer'
