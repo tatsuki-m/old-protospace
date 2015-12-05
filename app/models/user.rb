@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   has_many :prototypes
+
+  validates :name,
+            :profile,
+            :position,
+            :occupation,
+            :avatar,
+            presence: true,
+            on: :create
 end

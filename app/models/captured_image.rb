@@ -1,5 +1,11 @@
 class CapturedImage < ActiveRecord::Base
-  enum status: { main: 0, sub: 1 }
-  
+  enum status: %i(main sub)
+
   belongs_to :prototype
+
+  validates :content,
+            :status,
+            presence: true,
+            on: :create
+
 end
