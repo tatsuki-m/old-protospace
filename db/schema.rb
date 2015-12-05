@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20151204083541) do
   add_index "captured_images", ["prototype_id"], name: "index_captured_images_on_prototype_id", using: :btree
 
   create_table "prototypes", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "title",      limit: 255
     t.string   "catch_copy", limit: 255
     t.text     "concept",    limit: 65535
     t.integer  "user_id",    limit: 4
