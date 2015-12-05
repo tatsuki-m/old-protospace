@@ -10,9 +10,6 @@
       - if user_signed_in?
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
-            -# %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            -#   = current_user.name
-            -#   %span.caret
             = link_to "#", class: 'dropdown-toggle', role: 'button', 'aria-expanded' =>  'false', 'data-toggle' => 'dropdown' do
               #{current_user.name}
               %span.caret
@@ -23,8 +20,7 @@
                 = link_to 'Logout', destroy_user_session_path, method: :delete
           %li
             .btn.btn-primary.navbar-btn
-              %a{:href => "/proto/new"}
-                New Proto
+              = link_to "New Proto", new_prototype_path
       - else
         %ul.nav.navbar-nav.navbar-right
           %li
