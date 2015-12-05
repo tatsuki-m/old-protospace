@@ -26,7 +26,7 @@ belongs_to :user
 ```
 
 ### table
-- name
+- title
 - catch_copy
 - concept
 - user_id
