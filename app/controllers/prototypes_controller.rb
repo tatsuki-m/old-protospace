@@ -34,19 +34,11 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    if @prototype.update(update_params)
+    if @prototype.update(prototype_params)
       redirect_to prototype_path(@prototype), notice: 'Your prototype was successfully updated'
     else
       redirect_to edit_prototype_path(@prototype), notice: 'Your prototype was unsuccessfully updated'
     end
-  end
-
-  def newest
-    @prototypes = Prototype.order("id DESC")
-  end
-
-  def popular
-    @Prototypes = Prototype.all
   end
 
   private
@@ -55,16 +47,6 @@ class PrototypesController < ApplicationController
   end
 
   def prototype_params
-    params.require(:prototype).permit(
-      :title,
-      :catch_copy,
-      :concept,
-      :user_id,
-      captured_images_attributes: [:content, :status]
-    )
-  end
-
-  def update_params
     params.require(:prototype).permit(
       :title,
       :catch_copy,
