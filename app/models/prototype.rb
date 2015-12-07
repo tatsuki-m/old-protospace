@@ -13,4 +13,24 @@ class Prototype < ActiveRecord::Base
   def reject_sub_images(attributed)
     attributed['content'].blank?
   end
+
+  def set_main_thumbnail
+    captured_images.main.first.content
+  end
+
+  def set_sub_thumbnail(i)
+    captured_images.sub[i].present? ? captured_images.sub[i].content : ActionController::Base.helpers.asset_path('noimage.png')
+  end
+
+  def user_position
+    postion = if user.position.present?
+      user.position
+    else
+      "- No Data - "
+    end
+  end
+
+  def posted_date
+    created_at.strftime('%b %d %a')
+  end
 end

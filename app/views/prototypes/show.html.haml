@@ -3,8 +3,8 @@
     .col-md-6
       .media
         .media-left
-          - if @prototype.user.avatar.url.present?
-            = link_to image_tag(@prototype.user.avatar.url), user_path(@prototype.user)
+          - if @prototype.user.avatar.present?
+            = link_to image_tag(@prototype.user.avatar), user_path(@prototype.user)
           - else
             %img.media-object{alt: "No image", "data-holder-rendered" => "true", "data-src" => "holder.js/64x64", src: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg==", :style => "width: 64px; height: 64px;"}/
         .media-body
@@ -14,21 +14,28 @@
             by
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
-              = setting_position(@prototype.user)
+              = @prototype.user_position
 
     .col-md-6.text-right
       %button.btn.btn-default
         = image_tag("icon_heart.svg")
         Like
         %span.num 20
+      .extra-button
+        - if user_signed_in? && @prototype.user_id == current_user.id
+          .btn.btn-default.navbar-btn
+            = link_to "Edit", edit_prototype_path(@prototype)
+          .btn.btn-default.navbar-btn
+            = link_to "Delete", prototype_path(@prototype), method: :delete
+
   .row
-    .col-md-9
-      = image_tag @prototype.captured_images.main.first.content.url, class: 'img-responsive img-size-fix'
+    .col-md-9.image-box
+      = image_tag @prototype.set_main_thumbnail, class: 'img-responsive img-size-fix'
     .col-md-3
       %ul.proto-sub-list.list-group
         - @prototype.captured_images.sub.each do |image|
           %li.list-group-item
-            = image_tag(image.content.url, class: 'img-responsive')
+            = image_tag(image.content, class: 'img-responsive')
   .row.proto-description
     .col-md-3
       %h4 Catch Copy

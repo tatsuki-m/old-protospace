@@ -1,6 +1,6 @@
 .col-sm-4.col-md-3.proto-content
   .thumbnail
-    = link_to image_tag(prototype.captured_images.main.first.content.url), prototype_path(prototype)
+    = link_to image_tag(prototype.set_main_thumbnail), prototype_path(prototype)
     .caption
       %h3
         = prototype.title
@@ -8,7 +8,7 @@
         .proto-user
           = link_to prototype.user.name, user_path(prototype.user)
         .proto-posted
-          = change_date_format(prototype.created_at)
+          = prototype.posted_date
       -# %ul.proto-tag-list.list-inline
       -#   %li
       -#     %a{:href => "#", :class => "btn btn-default"} iPad
