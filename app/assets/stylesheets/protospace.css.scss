@@ -219,6 +219,7 @@ body {
 
 .btn-default {
   border: 1px solid #eee;
+
   &:hover {
     border: 1px solid #eee;
     background: #eee;
@@ -282,7 +283,7 @@ body {
   }
 
   .btn a {
-    color: #fff;
+    color: #337ab7;
 
     &:hover {
       text-decoration: none;
@@ -343,7 +344,7 @@ body {
 
 .proto-page {
   .user-nav {
-    padding: 50px 0;
+    padding: 50px 0 40px;
 
     .media-object {
       border-radius: 50%;
@@ -364,8 +365,9 @@ body {
   }
 
   .img-size-fix {
-    width: 95%;
     margin: 0 auto;
+    max-height: 800px;
+    max-width: 800px;
   }
 
   .proto-description {

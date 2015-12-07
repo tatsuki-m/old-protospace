@@ -7,10 +7,6 @@ class User < ActiveRecord::Base
   has_many :prototypes
 
   validates :name,
-            :profile,
-            :position,
-            :occupation,
-            :avatar,
             presence: true,
             on: :create
 end
