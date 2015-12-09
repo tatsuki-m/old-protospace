@@ -4,8 +4,8 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    %a.navbar-brand(href="/")
-      = image_tag("logo.png", :alt => "PROTO TYPE - SHARE THE PROTOTYPE", :height => "36px")
+    .navbar-brand
+      = link_to image_tag("logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "36px"), root_path
     .navbar-collapse.collapse.navbar-responsive-collapse
       - if user_signed_in?
         %ul.nav.navbar-nav.navbar-right
@@ -19,10 +19,10 @@
               %li
                 = link_to 'Logout', destroy_user_session_path, method: :delete
           %li
-            .btn.btn-primary.navbar-btn
+            .btn.btn-default.navbar-btn
               = link_to "New Proto", new_prototype_path
       - else
         %ul.nav.navbar-nav.navbar-right
           %li
-            .btn.btn-primary.navbar-btn
+            .btn.btn-default.navbar-btn
               = link_to 'Get Started', new_user_session_path

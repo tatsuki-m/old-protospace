@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
-
-  def edit
+  before_action :set_user, only: [:edit, :update, :show]
+  def show
   end
 
   def update
     @user.update(user_params)
-    redirect_to :root
+    redirect_to :root, notice: 'The user information was successfully updated'
   end
 
   private
