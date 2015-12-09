@@ -20,7 +20,7 @@ class PrototypesController < ApplicationController
     if @prototype.destroy
       redirect_to :root, notice: 'Your prototype was successfully deleted'
     else
-      redirect_to prototype_path(@prototype), error: 'Your prototype was unsuccessfully deleted'
+       render action: :show, error: 'Your prototype was unsuccessfully deleted'
     end
   end
 
@@ -29,15 +29,15 @@ class PrototypesController < ApplicationController
     if prototype.save
       redirect_to :root, notice: 'The new prototype was successfully created'
     else
-      redirect_to new_prototype_path, error: 'The new prototype was unsuccessfully created'
+      render action: :new, error: 'The new prototype was unsuccessfully created'
     end
   end
 
   def update
     if @prototype.update(prototype_params)
-      redirect_to prototype_path(@prototype), notice: 'Your prototype was successfully updated'
+      render action: :show, notice: 'Your prototype was successfully updated'
     else
-      redirect_to edit_prototype_path(@prototype), notice: 'Your prototype was unsuccessfully updated'
+      render action: :edit, notice: 'Your prototype was unsuccessfully updated'
     end
   end
 
