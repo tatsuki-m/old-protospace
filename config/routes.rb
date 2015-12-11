@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   scope module: :prototypes do
     resources :popular, only: :index
     resources :newest, only: :index
-    resources :comments
+    resources :comments, only: :create
+    resources :likes, only: [:create, :destroy]
   end
 end
