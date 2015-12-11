@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: [:show, :edit, :destroy, :update]
+  before_action :set_prototype, only: [:edit, :destroy, :update]
 
   def index
     @prototypes = Prototype.order("RAND()")
@@ -11,17 +11,12 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @prototype = Prototype.eager_load(:comments).find(params[:id])
+    @comments = @prototype.comments
+    @new_comment = Comment.new
   end
 
   def edit
-  end
-
-  def destroy
-    if @prototype.destroy
-      redirect_to :root, notice: 'Your prototype was successfully deleted'
-    else
-       render action: :show, error: 'Your prototype was unsuccessfully deleted'
-    end
   end
 
   def create
@@ -32,6 +27,15 @@ class PrototypesController < ApplicationController
       render action: :new, error: 'The new prototype was unsuccessfully created'
     end
   end
+
+  def destroy
+    if @prototype.destroy
+      redirect_to :root, notice: 'Your prototype was successfully deleted'
+    else
+       render action: :show, error: 'Your prototype was unsuccessfully deleted'
+    end
+  end
+
 
   def update
     if @prototype.update(prototype_params)
