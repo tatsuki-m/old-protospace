@@ -10,14 +10,14 @@ class Prototypes::CommentsController < ApplicationController
     @prototype = Prototype.find(prototype_params[:prototype_id])
   end
 
+  def prototype_params
+    params.require(:comment).permit(:prototype_id)
+  end
+
   def comment_params
     params.require(:comment).permit(
       :user_id,
       :content
     )
-  end
-
-  def prototype_params
-    params.require(:comment).permit(:prototype_id)
   end
 end
