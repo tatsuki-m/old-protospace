@@ -13,6 +13,7 @@ class PrototypesController < ApplicationController
 
   def show
     @prototype = Prototype.eager_load(:comments, { comments: :user }).find(params[:id])
+    @likes = @prototype.likes
   end
 
   def edit
