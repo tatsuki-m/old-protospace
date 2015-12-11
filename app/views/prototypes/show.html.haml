@@ -61,12 +61,12 @@
         = render partial: 'prototypes/comment', collection: @prototype.comments
       %form.form-inline
       - if user_signed_in?
-        = form_for @new_comment do |f|
+        = form_for @new_comment, remote: true do |f|
           = f.hidden_field :user_id, value: current_user.id
           = f.hidden_field :prototype_id, value: @prototype.id
           %h4 Write a comment
           .row
             .form-group.col-md-10
-              = f.text_area :content, require: true, rows: "3", placeholder: "Your comments", class: "form-control"
+              = f.text_area :content, require: true, rows: "3", placeholder: "Your comments", id: "text-field", class: "form-control"
             .form-group.col-md-2
               = f.submit "COMMENT", class: "button btn btn-primary"

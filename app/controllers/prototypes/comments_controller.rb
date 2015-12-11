@@ -3,7 +3,6 @@ class Prototypes::CommentsController < ApplicationController
 
   def create
     @prototype.comments.create(comment_params)
-    redirect_to :back, notice: 'Your comment was successfully create'
   end
 
   private
