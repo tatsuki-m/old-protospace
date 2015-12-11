@@ -1,5 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:edit, :destroy, :update]
+  before_action :set_new_comment, only: [:show, :update]
 
   def index
     @prototypes = Prototype.order("RAND()")
@@ -12,7 +13,6 @@ class PrototypesController < ApplicationController
 
   def show
     @prototype = Prototype.eager_load(:comments, { comments: :user }).find(params[:id])
-    @new_comment = Comment.new
   end
 
   def edit
@@ -47,6 +47,10 @@ class PrototypesController < ApplicationController
   private
   def set_prototype
     @prototype = Prototype.find(params[:id])
+  end
+
+  def set_new_comment
+    @new_comment = Comment.new
   end
 
   def prototype_params
