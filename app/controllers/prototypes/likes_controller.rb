@@ -2,7 +2,7 @@ class Prototypes::LikesController < ApplicationController
   before_action :set_prototype, only: :create
 
   def create
-    @prototype.likes.create(like_params)
+    @prototype.likes.create(params.permit(:user_id))
   end
 
   def destroy
@@ -13,9 +13,5 @@ class Prototypes::LikesController < ApplicationController
   private
   def set_prototype
     @prototype = Prototype.eager_load(:comments, { comments: :user }).find(params[:prototype_id])
-  end
-
-  def like_params
-    params.permit(:user_id)
   end
 end

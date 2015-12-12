@@ -51,7 +51,7 @@ class PrototypesController < ApplicationController
   end
 
   def set_new_comment
-    @new_comment = Comment.new
+    @comment = Comment.new
   end
 
   def prototype_params
