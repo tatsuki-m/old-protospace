@@ -1,6 +1,8 @@
 class Prototype < ActiveRecord::Base
   belongs_to :user
   has_many :captured_images, dependent: :delete_all
+  has_many :comments, dependent: :delete_all
+  has_many :likes, dependent: :delete_all
 
   accepts_nested_attributes_for :captured_images, reject_if: :reject_sub_images
 
@@ -32,5 +34,9 @@ class Prototype < ActiveRecord::Base
 
   def posted_date
     created_at.strftime('%b %d %a')
+  end
+
+  def fetch_curret_user_like(user)
+    likes.find_by(user_id: user)
   end
 end
