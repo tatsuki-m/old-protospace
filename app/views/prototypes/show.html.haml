@@ -46,11 +46,9 @@
     .col-md-3
       %h4 Tag List
       %ul.proto-tag-list.list-inline
-        %li
-          %a{:href => "#", :class => "btn btn-default"} iPad
-        %li
-          %a{:href => "#", :class => "btn btn-default"} wireframe
-  .row.proto-comments
+        - @prototype.tag_list.each do |val|
+          %li
+            = link_to val, ({ controller: "prototypes/tags", action: :show, tag_name: val }), class: "btn btn-default"
     %h4.col-md-12
       Comments
       %span#comments_number.num  (#{@prototype.comments.size})

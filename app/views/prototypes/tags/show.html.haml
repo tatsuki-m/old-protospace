@@ -1,0 +1,22 @@
+.jumbotron
+  .container.text-center
+    = image_tag("header_logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "73px")
+
+.filter-nav
+  .container
+    .row
+      %ul.nav.nav-pills.col-lg-11
+        %li.active{role: "presentation"}
+          = link_to "Popular PROTO", popular_index_path
+        %li{role: "presentation"}
+          = link_to "Newest PROTO", newest_index_path
+      = link_to "VIEW TAGS", tags_path, class: "btn btn-default col-lg-1"
+
+.container.proto-list.tag-list
+  .row
+    .col.sm-12.tag-content
+      .thumbnail
+        = link_to "#{@tag.name}", ({ action: :show, tag_name: @tag.name }), class: "tag-name btn btn-default"
+        = link_to "#{@tag.taggings.count} Projects", ({ action: :show, tag_name: @tag.name }), class: "tag-project-number label label-default"
+
+    = render partial: 'prototypes/prototype', collection: @prototypes
