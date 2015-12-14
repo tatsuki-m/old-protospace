@@ -1,7 +1,7 @@
 class Prototypes::TagsController < ApplicationController
   def index
-    total_number = ActsAsTaggableOn::Tag.all.count
-    @tags = ActsAsTaggableOn::Tag.most_used(total_number)
+    total = ActsAsTaggableOn::Tag.all.count
+    @tags = ActsAsTaggableOn::Tag.most_used(total)
   end
 
   def show
