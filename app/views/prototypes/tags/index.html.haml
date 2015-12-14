@@ -1,0 +1,7 @@
+.container.tag-list.clearfix
+  .row
+    - @tags.each do |tag|
+      .col-sm-4.col-sm-3.tag-content
+        .thumbnail
+          = link_to "#{tag.name}", ({ action: :show, tag_name: tag.name }), class: "tag-name btn btn-default"
+          = link_to "#{tag.taggings.count} Projects", ({ action: :show, tag_name: tag.name }), class: "tag-project-number label label-default"

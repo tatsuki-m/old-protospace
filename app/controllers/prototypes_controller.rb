@@ -21,6 +21,7 @@ class PrototypesController < ApplicationController
 
   def create
     prototype = Prototype.new(prototype_params)
+    prototype.tag_list.add(params[:prototype][:tags].values)
     if prototype.save
       redirect_to :root, notice: 'The new prototype was successfully created'
     else
