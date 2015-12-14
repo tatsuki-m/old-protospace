@@ -17,6 +17,7 @@ gem 'devise'
 gem 'pry-rails'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'acts-as-taggable-on'
 
 
 group :development, :test do
