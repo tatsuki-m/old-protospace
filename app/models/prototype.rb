@@ -6,6 +6,9 @@ class Prototype < ActiveRecord::Base
 
   accepts_nested_attributes_for :captured_images, reject_if: :reject_sub_images
 
+  acts_as_taggable
+  acts_as_ordered_taggable
+
   validates :title,
             :catch_copy,
             :concept,
