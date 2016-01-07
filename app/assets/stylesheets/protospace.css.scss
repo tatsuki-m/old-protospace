@@ -368,6 +368,12 @@ body {
     }
   }
 
+  .user-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+  }
+
   .img-size-fix {
     margin: 0 auto;
     max-height: 800px;
@@ -601,8 +607,12 @@ body {
       border-radius: 50%;
       width: 71px;
       height: 71px;
-      margin-left: -15px;
-      cursor: pointer;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
     }
   }
 

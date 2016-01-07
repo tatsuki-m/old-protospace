@@ -19,6 +19,13 @@
           %h4 Sub Thumbnails
           %ul.proto-sub-list.list-group
             %li.list-group-item.col-md-4
+              .image-upload#sub_image_0_uploader
+                = f.fields_for :captured_images do |image|
+                  %img{src: ""}
+                  = image.file_field :content
+                  = image.hidden_field :status, value: "sub"
+
+            %li.list-group-item.col-md-4
               .image-upload#sub_image_1_uploader
                 = f.fields_for :captured_images do |image|
                   %img{src: ""}
@@ -27,13 +34,6 @@
 
             %li.list-group-item.col-md-4
               .image-upload#sub_image_2_uploader
-                = f.fields_for :captured_images do |image|
-                  %img{src: ""}
-                  = image.file_field :content
-                  = image.hidden_field :status, value: "sub"
-
-            %li.list-group-item.col-md-4
-              .image-upload#sub_image_3_uploader
                 = f.fields_for :captured_images do |image|
                   %img{src: ""}
                   = image.file_field :content

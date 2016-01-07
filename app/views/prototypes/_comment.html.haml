@@ -1,9 +1,9 @@
 .media
   .media-left
     - if comment.user.avatar.present?
-      = link_to image_tag(comment.user.avatar), user_path(comment.user)
+      = link_to image_tag(comment.user.avatar, class: "user-icon"), user_path(comment.user)
     - else
-      = image_tag("noimage.png", alt: "No image", data: { holder: { rendered: true }, src: "holder.js/64x64" }, class: "media-object", style: "width: 64px; height: 64px;")
+      = image_tag("noimage.png", alt: "No image", data: { holder: { rendered: true }, src: "holder.js/64x64" }, class: "user-icon")
 
   .media-body
     %h4#top-aligned-media.media-heading

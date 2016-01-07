@@ -21,11 +21,11 @@ class PrototypesController < ApplicationController
 
   def create
     prototype = Prototype.new(prototype_params)
-    prototype.tag_list.add(params[:prototype][:tags].values)
+    prototype.tag_list.add.tags_params.values
     if prototype.save
       redirect_to :root, notice: 'The new prototype was successfully created'
     else
-      render action: :new, error: 'The new prototype was unsuccessfully created'
+      redirect_to action: :new, notice: 'The new prototype was unsuccessfully created'
     end
   end
 
@@ -33,7 +33,7 @@ class PrototypesController < ApplicationController
     if @prototype.destroy
       redirect_to :root, notice: 'Your prototype was successfully deleted'
     else
-       render action: :show, error: 'Your prototype was unsuccessfully deleted'
+      render action: :show, notice: 'Your prototype was unsuccessfully deleted'
     end
   end
 
@@ -63,5 +63,9 @@ class PrototypesController < ApplicationController
       :user_id,
       captured_images_attributes: [:content, :status, :id]
     )
+  end
+
+  def tags_params
+    params.require(:prototype).require(:tags)
   end
 end

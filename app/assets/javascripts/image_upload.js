@@ -1,8 +1,9 @@
-$(function() {
+$(document).on("ready page:load", function(){
   var mainImage = '#main_image_uploader'
-  var subImage1 = '#sub_image_1_uploader'
-  var subImage2 = '#sub_image_2_uploader'
-  var subImage3 = '#sub_image_3_uploader'
+  var subImage1 = '#sub_image_0_uploader'
+  var subImage2 = '#sub_image_1_uploader'
+  var subImage3 = '#sub_image_2_uploader'
+  var userImage = '.user-image'
 
   function uploadImage(className) {
     $(className + ' input[type=file]').change(function(){
@@ -37,4 +38,6 @@ $(function() {
   uploadImage(subImage1);
   uploadImage(subImage2);
   uploadImage(subImage3);
+
+  uploadImage(userImage);
 })
