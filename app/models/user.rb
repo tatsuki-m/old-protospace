@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   validates :name,
             presence: true,
             on: :create
+
+  def set_profile_photo
+    avatar.present? ? avatar : ActionController::Base.helpers.asset_path('noimage.png')
+  end
 end
