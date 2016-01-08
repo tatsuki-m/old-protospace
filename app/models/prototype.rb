@@ -42,4 +42,12 @@ class Prototype < ActiveRecord::Base
   def fetch_curret_user_like(user)
     likes.find_by(user_id: user)
   end
+
+  def fetch_tag(i)
+    if tag_list[i].present?
+      tag_list[i]
+    else
+      ""
+    end
+  end
 end

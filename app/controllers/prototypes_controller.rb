@@ -21,7 +21,6 @@ class PrototypesController < ApplicationController
 
   def create
     prototype = Prototype.new(prototype_params)
-    prototype.tag_list.add.tags_params.values
     if prototype.save
       redirect_to :root, notice: 'The new prototype was successfully created'
     else
@@ -56,16 +55,14 @@ class PrototypesController < ApplicationController
   end
 
   def prototype_params
+    tag_list = params[:prototype][:tag_list]
     params.require(:prototype).permit(
       :title,
       :catch_copy,
       :concept,
       :user_id,
+      :tag_list,
       captured_images_attributes: [:content, :status, :id]
-    )
-  end
-
-  def tags_params
-    params.require(:prototype).require(:tags)
+    ).merge(tag_list: tag_list)
   end
 end
