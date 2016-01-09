@@ -8,6 +8,7 @@ class Prototype < ActiveRecord::Base
 
   acts_as_taggable
   acts_as_ordered_taggable
+  paginates_per 8
 
   validates :title,
             :catch_copy,

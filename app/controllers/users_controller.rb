@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :edit]
 
   def show
-    @prototypes = @user.prototypes
+    @prototypes = @user.prototypes.page(params[:page])
   end
 
   def update

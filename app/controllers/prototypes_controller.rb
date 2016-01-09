@@ -3,7 +3,7 @@ class PrototypesController < ApplicationController
   before_action :set_new_comment, only: [:show, :update]
 
   def index
-    @prototypes = Prototype.order("RAND()")
+    @prototypes = Prototype.order("RAND()").page(params[:page])
   end
 
   def new
