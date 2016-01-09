@@ -8,6 +8,7 @@ class Prototype < ActiveRecord::Base
 
   acts_as_taggable
   acts_as_ordered_taggable
+  paginates_per 8
 
   validates :title,
             :catch_copy,
@@ -41,5 +42,13 @@ class Prototype < ActiveRecord::Base
 
   def fetch_curret_user_like(user)
     likes.find_by(user_id: user)
+  end
+
+  def fetch_tag(i)
+    if tag_list[i].present?
+      tag_list[i]
+    else
+      ""
+    end
   end
 end

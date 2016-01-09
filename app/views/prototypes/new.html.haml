@@ -10,17 +10,19 @@
       .row
         .col-md-12
           %h4 Main Thumbnail
-          .cover-image-upload
+          .cover-image-upload#main_image_uploader
             = f.fields_for :captured_images do |image|
+              %img{src: ""}
               = image.file_field :content, required: true
               = image.hidden_field :status, value: "main"
         .col-md-12
           %h4 Sub Thumbnails
           %ul.proto-sub-list.list-group
-            - 3.times do
+            - 3.times do |i|
               %li.list-group-item.col-md-4
-                .image-upload
+                .image-upload{ id: "sub_image_#{i}_uploader" }
                   = f.fields_for :captured_images do |image|
+                    %img{src: ""}
                     = image.file_field :content
                     = image.hidden_field :status, value: "sub"
       .row.proto-description
@@ -33,8 +35,8 @@
         .col-md-12
           %h4 Tag List
           .row
-          - %w(UI/UX Ruby Application).each.with_index(1) do |val, index|
+          - %w(UI/UX Ruby Application).each do |val|
             .col-md-3
-              = text_field_tag "prototype[tags][#{index}]", "", placeholder: val
+              = text_field_tag "prototype[tag_list][]", "", placeholder: val
       .row.text-center.proto-btn
         = f.submit "PUBLISH", id: "button", class: "btn btn-lg btn-primary btn-block"

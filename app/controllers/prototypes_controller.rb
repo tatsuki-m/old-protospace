@@ -3,7 +3,7 @@ class PrototypesController < ApplicationController
   before_action :set_new_comment, only: [:show, :update]
 
   def index
-    @prototypes = Prototype.order("RAND()")
+    @prototypes = Prototype.order("RAND()").page(params[:page])
   end
 
   def new
@@ -21,11 +21,10 @@ class PrototypesController < ApplicationController
 
   def create
     prototype = Prototype.new(prototype_params)
-    prototype.tag_list.add(params[:prototype][:tags].values)
     if prototype.save
       redirect_to :root, notice: 'The new prototype was successfully created'
     else
-      render action: :new, error: 'The new prototype was unsuccessfully created'
+      redirect_to action: :new, notice: 'The new prototype was unsuccessfully created'
     end
   end
 
@@ -33,7 +32,7 @@ class PrototypesController < ApplicationController
     if @prototype.destroy
       redirect_to :root, notice: 'Your prototype was successfully deleted'
     else
-       render action: :show, error: 'Your prototype was unsuccessfully deleted'
+      render action: :show, notice: 'Your prototype was unsuccessfully deleted'
     end
   end
 
@@ -56,12 +55,14 @@ class PrototypesController < ApplicationController
   end
 
   def prototype_params
+    tag_list = params[:prototype][:tag_list]
     params.require(:prototype).permit(
       :title,
       :catch_copy,
       :concept,
       :user_id,
+      :tag_list,
       captured_images_attributes: [:content, :status, :id]
-    )
+    ).merge(tag_list: tag_list)
   end
 end

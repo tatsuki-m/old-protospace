@@ -21,7 +21,8 @@
               = f.fields_for :captured_images, @prototype.captured_images.sub[i] do |image|
                 - if image.index <= 3
                   %li.list-group-item.col-md-4
-                    .image-upload{ style: "background: url(#{@prototype.set_sub_thumbnail(i)}) no-repeat center center; background-size: contain;" }
+                    .image-upload{ id: "sub_image_#{i}_uploader", style: "background: url(#{@prototype.set_sub_thumbnail(i)}) no-repeat center center;" }
+                      %img{ src: "" }
                       = image.file_field :content
                       = image.hidden_field :status, value: "sub"
                       - if @prototype.captured_images.sub[i].blank?
@@ -43,5 +44,11 @@
         -#       %input{:type => "text", :placeholder => "UI"}/
         -#     .col-md-3
         -#       %input{:type => "text", :placeholder => "Application"}/
+        .col-md-12
+          %h4 Tag List
+          .row
+            - 3.times do |i|
+              .col-md-3
+                = text_field_tag "prototype[tag_list][]", @prototype.fetch_tag(i)
       .row.text-center.proto-btn
         = f.submit "UPDATE", id: "button", class: "btn btn-lg btn-primary btn-block"

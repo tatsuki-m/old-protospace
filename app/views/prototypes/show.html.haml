@@ -4,7 +4,7 @@
       .media
         .media-left
           - if @prototype.user.avatar.present?
-            = link_to image_tag(@prototype.user.avatar), user_path(@prototype.user)
+            = link_to image_tag(@prototype.user.avatar, class: "user-icon"), user_path(@prototype.user)
           - else
             = image_tag("noimage.png", alt: "No image", data: { holder: { rendered: true }, src: "holder.js/64x64" }, class: "media-object", style: "width: 64px; height: 64px;")
         .media-body

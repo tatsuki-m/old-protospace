@@ -1,11 +1,16 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :show]
+  before_action :set_user, only: [:show, :update, :edit]
+
   def show
+    @prototypes = @user.prototypes.page(params[:page])
   end
 
   def update
     @user.update(user_params)
     redirect_to :root, notice: 'The user information was successfully updated'
+  end
+
+  def edit
   end
 
   private
@@ -23,5 +28,4 @@ class UsersController < ApplicationController
       :avatar
     )
   end
-
 end
