@@ -19,6 +19,8 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'acts-as-taggable-on'
 gem 'kaminari'
+gem 'fog'
+gem 'config'
 
 group :development, :test do
   gem 'byebug'
